@@ -1,35 +1,43 @@
 import React from 'react';
-import { Text, View, Button, StyleSheet, Image } from 'react-native';
+import { Text, View, Button, Image, StyleSheet } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 import firebase from 'firebase';
 
-class LoginScreen extends React.Component {
+class SignupScreen extends React.Component {
   static navigationOptions = {
-    title: 'Audi'
+    title: 'Sign Up'
   };
 
-  toLogin = () => {
-    const { email, password } = this.state;
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => this.props.navigation.navigate('Home'))
-      .catch(error => console.log(error));
+  toSignUp = () => {
+    if (this.state.password.length < 6) {
+      alert('Please enter more than 6 characters.');
+    } else {
+      const { email, password } = this.state;
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => this.props.navigation.navigate('Home'))
+        .catch(error => console.log(error));
+    }
   };
 
-  state = { email: '', password: '' };
+  state = {
+    email: '',
+    password: ''
+  };
 
   render() {
     return (
       <View style={styles.container}>
         <Image
-          style={styles.audiLoginImage}
-          source={require('../demo/assets/images/audi-login.png')}
+          style={styles.audiSignUpImage}
+          source={require('../demo/assets/images/audi-signup.png')}
         />
         <TextInput
           style={styles.inputPlacement}
           placeholder='Enter Email'
+          placeholderTextColor="white"
           value={this.state.email}
           onChangeText={email => this.setState({ email })}
           autoCapitalize='none'
@@ -39,6 +47,7 @@ class LoginScreen extends React.Component {
           style={styles.inputPlacement}
           autoCorrect={false}
           placeholder='Enter Password'
+          placeholderTextColor="white"
           autoCapitalize='none'
           secureTextEntry={true}
           value={this.state.password}
@@ -50,26 +59,28 @@ class LoginScreen extends React.Component {
             {
               width: '50%',
               marginLeft: 90,
-              marginTop: 20
+              marginTop: 20,
+              color: "white",
             }
           ]}
         >
-          <Button onPress={this.toLogin} title='Login' color='blue' />
+          <Button onPress={this.toSignUp} title='Sign Up' color='blue' />
         </View>
 
-        <Text style={styles.signUpText}>Don't have an account? Sign up!</Text>
+        <Text style={styles.loginText}>Already have an account? Login</Text>
 
         <View
           style={[
             {
               width: '50%',
-              marginLeft: 90
+              marginLeft: 90,
+              color: "white",
             }
           ]}
         >
           <Button
-            onPress={() => this.props.navigation.navigate('Home')}
-            title='Sign Up'
+            onPress={() => this.props.navigation.navigate('Login')}
+            title='Login'
             color='blue'
           />
         </View>
@@ -78,14 +89,14 @@ class LoginScreen extends React.Component {
   }
 }
 
-export default LoginScreen;
+export default SignupScreen;
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: 40,
     color: 'white',
     flex: 1,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
   },
   inputPlacement: {
     marginLeft: 30,
@@ -98,17 +109,17 @@ const styles = StyleSheet.create({
     width: '80%',
     color: 'white'
   },
-  signUpText: {
+  loginText: {
     color: 'white',
     textAlign: 'center',
     paddingTop: 20,
     paddingBottom: 5,
     fontSize: 16
   },
-  audiLoginImage: {
+  audiSignUpImage: {
     marginLeft: 'auto',
     marginRight: 'auto',
     width: 330,
-    height: 170
+    height: 160
   }
 });

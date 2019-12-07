@@ -99,11 +99,13 @@ class App extends React.Component {
           alignItems: "center",
           height: "100%",
           justifyContent: "center",
+          color: "white",
+          backgroundColor: "black",
         }}
       >
 
         {/* Specify Your Name */}
-        <Text style={{ fontWeight: "bold", fontSize: 18 }}>
+        <Text style={{ fontWeight: "bold", fontSize: 18 , color: "white"}}>
           Enter Your Name
         </Text>
         <TextInput
@@ -112,6 +114,9 @@ class App extends React.Component {
             width: 150,
             borderColor: "white",
             borderWidth: 1,
+            color: "white",
+
+
           }}
           placeholder="Enter Here"
           onChangeText={name => this.setState({ name })}
@@ -119,7 +124,7 @@ class App extends React.Component {
         />
 
         {/* Specify License Plate */}
-        <Text style={{ fontWeight: "bold", fontSize: 18 }}>
+        <Text style={{ fontWeight: "bold", fontSize: 18 , color: "white"}}>
           Enter License Plate Number
         </Text>
         <TextInput
@@ -127,7 +132,9 @@ class App extends React.Component {
             height: 30,
             width: 150,
             borderColor: "white",
-            borderWidth: 1
+            borderWidth: 1,
+            color: "white",
+
           }}
           placeholder="Enter Here"
           onChangeText={vehiclenumber => this.setState({ vehiclenumber })}
@@ -135,7 +142,7 @@ class App extends React.Component {
         />
 
         {/* Specify What Service */}
-        <Text style={{ fontWeight: "bold", fontSize: 18 }}>
+        <Text style={{ fontWeight: "bold", fontSize: 18 , color: "white"}}>
           Type of Service
         </Text>
         <TextInput
@@ -143,7 +150,9 @@ class App extends React.Component {
             height: 30,
             width: 150,
             borderColor: "white",
-            borderWidth: 1
+            borderWidth: 1,
+            color: "white",
+
           }}
           placeholder="Enter Here"
           onChangeText={type => this.setState({ type })}

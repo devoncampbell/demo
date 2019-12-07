@@ -272,7 +272,14 @@ class SettingsScreen extends React.Component {
           We're here to assist you in any way.
         </Animated.Text>
         {/* Help Animation End */}
+
+        <Button
+            onPress={() => this.props.navigation.navigate('SignUp')}
+            title='Logout'
+            color='blue'
+          />
       </View>
+
     );
   }
 }
