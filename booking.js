@@ -98,7 +98,7 @@ class App extends React.Component {
         style={{
           alignItems: "center",
           height: "100%",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
 

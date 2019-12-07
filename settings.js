@@ -1,41 +1,308 @@
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import React from 'react';
+import { Text, View, Button, Image, Animated, StyleSheet } from 'react-native';
 
-export default class SettingsScreen extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text style={styles.h1}>Audi R8</Text>
-                <Image style={styles.image}
-                    source={require('./assets/images/audir8.jpg')}
-                />
-                <Text style={styles.text}>The R8's V-10 engine is offered in two strengths, both potent enough to knock the wind out of unsuspecting passengers and both capable of searing your eardrums with their otherworldly exhalations. The R8's seven-speed dual-clutch automatic isn't exactly the smoothest gearbox and occasionally it downshifts too abruptly and perhaps too deeply, causing neck-snapping acceleration followed by an almost immediate upshift to a higher gear. The base R8 comes standard with an adaptive suspension, while Performance models are fitted with a more aggressive, fixed-damper setup. Both soak up bumps admirably and provide a comfortable ride that you could tolerate without fatigue on long trips. The R8's supple nature comes with a drawback, however: In full-attack mode, it simply doesn't handle corners as confidently as its rivals, and sometimes it feels more unsettled than you'd expect from a supercar. The standard steering setup is direct and relays information from the road to the driver's hands with only a mild filter.</Text>
-            </View>
-        );
-    }
+class SettingsScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Settings'
+  };
+
+  account = new Animated.Value(0);
+  experience = new Animated.Value(0);
+  notifications = new Animated.Value(0);
+  sync = new Animated.Value(0);
+  feedback = new Animated.Value(0);
+  help = new Animated.Value(0);
+
+  componentDidMount() {
+    Animated.timing(this.account, {
+      duration: 500,
+      toValue: 1
+    }).start();
+
+    Animated.timing(this.experience, {
+      duration: 500,
+      toValue: 1,
+      delay: 500
+    }).start();
+
+    Animated.timing(this.notifications, {
+      duration: 500,
+      toValue: 1,
+      delay: 800
+    }).start();
+
+    Animated.timing(this.sync, {
+      duration: 500,
+      toValue: 1,
+      delay: 1100
+    }).start();
+
+    Animated.timing(this.feedback, {
+      duration: 500,
+      toValue: 1,
+      delay: 1400
+    }).start();
+
+    Animated.timing(this.help, {
+      duration: 500,
+      toValue: 1,
+      delay: 1700
+    }).start();
   }
+  render() {
+    return (
+      <View style={styles.container}>
+        {/* Account Animation */}
+        <Animated.Text
+          style={{
+            ...styles.settingName,
+            transform: [
+              {
+                translateX: this.account.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.account
+          }}
+        >
+          
+          Account
+        </Animated.Text>
 
-  const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'black',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    image: {
-        width: '100%',
-        height: 200,
-      },
+        <Animated.Text
+          style={{
+            ...styles.borderStyle,
+            transform: [
+              {
+                translateX: this.account.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.account
+          }}
+        >
+          Tell us about yourself.
+        </Animated.Text>
+        {/* Account Animation End */}
 
-    text: {
-        color: 'white',
-        marginLeft: 40,
-        marginRight: 40,
-        marginTop: 20,
-    },
+        {/* Experience Animation */}
+        <Animated.Text
+          style={{
+            ...styles.settingName,
+            transform: [
+              {
+                translateX: this.experience.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.experience
+          }}
+        >
+          
+          Experience
+        </Animated.Text>
 
-    h1: {
-        color: 'white',
-        fontSize: 50,
-    },
+        <Animated.Text
+          style={{
+            ...styles.borderStyle,
+            transform: [
+              {
+                translateX: this.experience.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.experience
+          }}
+        >
+          What's your knowledge?
+        </Animated.Text>
+        {/* Experience Animation End */}
+
+        {/* Notification Animation */}
+        <Animated.Text
+          style={{
+            ...styles.settingName,
+            transform: [
+              {
+                translateX: this.notifications.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.notifications
+          }}
+        >
+          
+          Notifications
+        </Animated.Text>
+
+        <Animated.Text
+          style={{
+            ...styles.borderStyle,
+            transform: [
+              {
+                translateX: this.notifications.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.notifications
+          }}
+        >
+          Customize it to your liking.
+        </Animated.Text>
+        {/* Notification Animation End */}
+
+        {/* Sync Animation */}
+        <Animated.Text
+          style={{
+            ...styles.settingName,
+            transform: [
+              {
+                translateX: this.sync.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.sync
+          }}
+        >
+          
+          Sync
+        </Animated.Text>
+        <Animated.Text
+          style={{
+            ...styles.borderStyle,
+            transform: [
+              {
+                translateX: this.sync.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.sync
+          }}
+        >
+          Constant syncing. Less worries.
+        </Animated.Text>
+        {/* Sync Animation End */}
+
+        {/* Feedback Animation */}
+        <Animated.Text
+          style={{
+            ...styles.settingName,
+            transform: [
+              {
+                translateX: this.feedback.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.feedback
+          }}
+        >
+          
+          Feedback
+        </Animated.Text>
+
+        <Animated.Text
+          style={{
+            ...styles.borderStyle,
+            transform: [
+              {
+                translateX: this.feedback.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.feedback
+          }}
+        >
+          You can make our services improve.
+        </Animated.Text>
+        {/* Feedback Animation End */}
+
+        {/* Help Animation */}
+        <Animated.Text
+          style={{
+            ...styles.settingName,
+            transform: [
+              {
+                translateX: this.help.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.help
+          }}
+        >
+          
+          Help &amp; Support
+        </Animated.Text>
+
+        <Animated.Text
+          style={{
+            ...styles.borderStyle,
+            transform: [
+              {
+                translateX: this.help.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [-80, 0]
+                })
+              }
+            ],
+            opacity: this.help
+          }}
+        >
+          We're here to assist you in any way.
+        </Animated.Text>
+        {/* Help Animation End */}
+      </View>
+    );
+  }
+}
+
+export default SettingsScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    color: 'white',
+    backgroundColor: 'black',
+    paddingTop: 40
+  },
+  borderStyle: {
+    paddingLeft: 15,
+    color: 'white',
+    fontSize: 19,
+    borderColor: 'white',
+    borderBottomWidth: 0.2,
+    marginBottom: 20,
+    marginTop: 10
+  },
+  imageSizing: {
+    width: 25,
+    height: 25
+  },
+  settingName: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 27,
+    paddingLeft: 15
+  }
 });

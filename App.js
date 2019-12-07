@@ -4,15 +4,15 @@ import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import HomeScreen from './home';
-import AboutScreen from './about';
 import SettingsScreen from './settings';
 import BookingScreen from './booking';
+import AboutScreen from './about';
 
 const tabNavigator = createBottomTabNavigator({
-  'Audi RS3': HomeScreen,
-  'Audi TTRS': AboutScreen,
-  'Audi R8': SettingsScreen,
-  'Book A Service': BookingScreen
+  'Home': HomeScreen,
+  'Shop': AboutScreen,
+  'Book A Service': BookingScreen,
+  'Settings': SettingsScreen,
 })
 
 export default createAppContainer (tabNavigator)
